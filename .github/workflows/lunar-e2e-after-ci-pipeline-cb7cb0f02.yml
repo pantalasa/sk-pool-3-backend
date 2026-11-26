@@ -1,0 +1,11 @@
+name: lunar-e2e-after-ci-pipeline-cb7cb0f02
+on:
+  push:
+    paths: [".github/workflows/lunar-e2e-after-ci-pipeline-cb7cb0f02.yml"]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: localdev-e2e-test-45845180204-1-github-2-e2e
+    steps:
+      - run: '[ "${{ github.run_attempt }}" != 1 ] || { echo "attempt 1 fails so it can be re-run"; exit 1; }'
